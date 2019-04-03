@@ -1,5 +1,6 @@
 import React from 'react';
 import styled from 'styled-components';
+import DeleteFriendButton from './DeleteFriendButton';
 
 
 const FriendListWrapper = styled.div`
@@ -31,7 +32,7 @@ const FriendsList = (props) => {
                 <p>Name: {friend.name}</p>
                 <p>Age: {friend.age}</p>
                 <p>Email: {friend.email}</p>
-                
+                <DeleteFriendButton onClick= {props.handleFriendDeleteBtn}/>
             </SingleFriend>
             )
         }

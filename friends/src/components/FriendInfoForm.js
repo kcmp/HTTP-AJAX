@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import styled from 'styled-components';
 
+
 const FriendInputForm = styled.div`
 display: flex;
 flex-direction:column;
@@ -17,8 +18,11 @@ width: 100%;
             <input type="text" placeholder="Enter Friend's Age" name= "age" onChange= {props.handleFriendFormInput}/>
             <br/>
             <input type="text" placeholder="Enter Friend's Email" name= "email" onChange= {props.handleFriendFormInput}/>
+            
 
          </FriendInputForm>
+
+         
         )
     }
 

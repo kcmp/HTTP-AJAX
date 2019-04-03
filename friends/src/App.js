@@ -45,13 +45,21 @@ class App extends Component {
       })
   }
 
-  
+  handleFriendDeleteBtn = id => {
+    // id.preventDefault();
+    axios
+      .delete(`http://localhost:5000/friends/${id}`)
+        axios.get('http://localhost:5000/friends')
+          .then(res => {
+            this.setState({friends: res.data})
+          })
+  }
 
   render() {
     return (
       <div className="App">
 
-        <FriendsList friends= {this.state.friends} />
+        <FriendsList friends= {this.state.friends} handleFriendDeleteBtn = {this.handleFriendDeleteBtn}/>
         <FriendInfoForm handleFriendFormInput = {this.handleFriendFormInput} />
         <br/>
         <AddFriendButton handleSubmitBtn = {this.handleSubmitBtn} handleFriendFormInput= {this.handleFriendFormInput}/>
