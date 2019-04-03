@@ -9,7 +9,7 @@ justify-content:space-around;
 width: 100%;
 `
 
- function FriendInfoForm (props) {
+ const FriendInfoForm = (props) => {
     return (
         <FriendInputForm className="inputForm">
             <input type="text" placeholder="Enter Friend's Name" name= "name" />
