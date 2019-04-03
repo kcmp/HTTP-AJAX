@@ -12,9 +12,9 @@ import style from 'styled-components';
     padding-bottom: 15px;
     margin-bottom: 15px;
 `
-function DeleteFriendButton (props) {
+const DeleteFriendButton = (props) => {
     return (
-        <DeleteBtn>
+        <DeleteBtn onClick = {props.handleFriendDeleteBtn} handleFriendFormInput = {props.handleFriendFormInput}>
             Delete X
         </DeleteBtn>
     )
