@@ -12,11 +12,11 @@ width: 100%;
  const FriendInfoForm = (props) => {
     return (
         <FriendInputForm className="inputForm">
-            <input type="text" placeholder="Enter Friend's Name" name= "name" />
+            <input type="text" placeholder="Enter Friend's Name" name= "name" onChange= {props.handleFriendFormInput}/>
             <br/>
-            <input type="text" placeholder="Enter Friend's Age" name= "age" />
+            <input type="text" placeholder="Enter Friend's Age" name= "age" onChange= {props.handleFriendFormInput}/>
             <br/>
-            <input type="text" placeholder="Enter Friend's Email" name= "email" />
+            <input type="text" placeholder="Enter Friend's Email" name= "email" onChange= {props.handleFriendFormInput}/>
 
          </FriendInputForm>
         )

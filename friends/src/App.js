@@ -5,6 +5,7 @@ import axios from 'axios';
 
 import FriendInfoForm from './components/FriendInfoForm';
 import FriendsList from './components/FriendsList';
+import AddFriendButton from './components/AddFriendButton';
 
 
 class App extends Component {
@@ -53,7 +54,8 @@ class App extends Component {
         <FriendsList friends= {this.state.friends} />
         <FriendInfoForm handleFriendFormInput = {this.handleFriendFormInput} />
         <br/>
-        
+        <AddFriendButton handleSubmitBtn = {this.handleSubmitBtn} handleFriendFormInput= {this.handleFriendFormInput}/>
+        <br/>
         
       </div>
     );
