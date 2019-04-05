@@ -9,13 +9,17 @@ import AddFriendButton from './components/AddFriendButton';
 
 
 class App extends Component {
-  constructor() {
-    super();
+  constructor(props) {
+    super(props);
     this.state = {
      friends: [],
-     name: '',
-     age: '',
-     email: '',
+     postSuccessMessage: '',
+      postError: '',
+      putSuccessMessage: '',
+      putError: '',
+      deleteSuccessMessage: '',
+      deleteError: '',
+      showForm: 'post'
       }
   }
 
@@ -30,6 +34,11 @@ class App extends Component {
     this.setState({ [name]: event.target.value });  
   }
 
+  deleteFriend = e => {
+    e.preventDefault();
+    this.props.deleteFriend(this.state.friends);
+  };
+
   handleSubmitBtn = event => {
     event.preventDefault();
     axios.post('http://localhost:5000/friends', {
@@ -38,7 +47,7 @@ class App extends Component {
       email: this.state.email,
     })
       .then(res => {
-        this.setState({ friends: res.data})
+        this.setState({ friends: res.data.friends})
       })
       .catch(err => {
         console.log(err);
@@ -49,9 +58,14 @@ class App extends Component {
     // id.preventDefault();
     axios
       .delete(`http://localhost:5000/friends/${id}`)
-        axios.get('http://localhost:5000/friends')
+        // axios.get('http://localhost:5000/friends')
           .then(res => {
-            this.setState({friends: res.data})
+            this.setState({
+              friends: res.data.friends
+            })
+          })
+          .catch(err => {
+            console.log(err);
           })
   }
 
@@ -59,7 +73,7 @@ class App extends Component {
     return (
       <div className="App">
 
-        <FriendsList friends= {this.state.friends} handleFriendDeleteBtn = {this.handleFriendDeleteBtn}/>
+        <FriendsList friends= {this.state.friends} handleFriendDeleteBtn = {this.handleFriendDeleteBtn} deleteFriend = {this.deleteFriend}/>
         <FriendInfoForm handleFriendFormInput = {this.handleFriendFormInput} />
         <br/>
         <AddFriendButton handleSubmitBtn = {this.handleSubmitBtn} handleFriendFormInput= {this.handleFriendFormInput}/>
